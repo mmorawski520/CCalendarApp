@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">CCalendarApp</string>
+    <string name="begin_of_the_journey">Begin of the journey</string>
+    <string name="button">Button</string>
+
+    <string name="end_of_the_journey">End of the journey</string>
+    <string name="simulation">Simulation</string>
+    <string name="_1">1</string>
+
 </resources>

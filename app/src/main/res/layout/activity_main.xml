@@ -21,51 +21,60 @@
                 android:id="@+id/textViewBegin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Begin of the journey" />
+                android:text="@string/begin_of_the_journey" />
 
             <Button
                 android:id="@+id/btnJourneyStart"
                 android:layout_width="match_parent"
                 android:layout_height ="wrap_content"
                 android:layout_marginHorizontal="80dp"
-                android:text="Button"
+                android:text="@string/button"
                 tools:ignore="DuplicateSpeakableTextCheck" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Middle of the journey" />
 
             <Button
                 android:id="@+id/btnJourneyMiddle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="80dp"
-                android:text="Button"
+                android:text="@string/button"
                 />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="End of the journey" />
+                android:text="@string/end_of_the_journey" />
 
             <Button
                 android:id="@+id/btnJourneyEnd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="80dp"
-                android:text="Button" />
+                android:text="@string/button" />
 
             <TextView
                 android:id="@+id/textViewStep"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="@string/_1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.551" />
+
             <SeekBar
                 android:id="@+id/seekBar"
-                android:layout_width="264dp"
+                android:layout_width="390dp"
                 android:layout_height="36dp"
                 android:max="20"
                 android:min="10"
@@ -84,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="80dp"
-                android:text="Simulation" />
+                android:text="@string/simulation" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
