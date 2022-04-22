@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH)
             )
+
             val currentDate = Calendar.getInstance()
             currentDate.set(currentDate.get(Calendar.YEAR), Calendar.DECEMBER, 31)
             dpd.datePicker.minDate = Date().time
@@ -100,7 +101,6 @@ class MainActivity : AppCompatActivity() {
                     stepTextView.text.toString().toDouble()
                 );
             val intent = Intent(this, SimulationActivity::class.java)
-            // intent.putExtra("SimulationData",SimulationData)
             intent.putExtra("SimulationData",SimulationData)
             startActivity(intent)
         }
