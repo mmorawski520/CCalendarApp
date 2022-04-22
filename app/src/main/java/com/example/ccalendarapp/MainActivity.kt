@@ -1,7 +1,7 @@
 package com.example.ccalendarapp
 
 import android.app.DatePickerDialog
-import android.content.Intent
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -20,18 +20,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var cal = Calendar.getInstance()
 
+        val cal = Calendar.getInstance()
+
+        //layout components
         val seekBar = findViewById<SeekBar>(R.id.seekBar)
         val stepTextView = findViewById<TextView>(R.id.textViewStep)
 
+        //btns
         val btnJourneyStart = findViewById<Button>(R.id.btnJourneyStart)
         val btnJourneyMid = findViewById<Button>(R.id.btnJourneyMiddle)
         val btnJourneyEnd = findViewById<Button>(R.id.btnJourneyEnd)
         val btnSimulate = findViewById<Button>(R.id.btnStartSim)
 
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
-
             override fun onDateSet(
                 view: DatePicker, year: Int, monthOfYear: Int,
                 dayOfMonth: Int
@@ -39,10 +41,7 @@ class MainActivity : AppCompatActivity() {
                 cal.set(Calendar.YEAR, year)
                 cal.set(Calendar.MONTH, monthOfYear)
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-
-
             }
-
         }
 
         btnJourneyStart.setOnClickListener {
@@ -92,13 +91,6 @@ class MainActivity : AppCompatActivity() {
             btnJourneyEnd.text = dateFormat.format(cal.getTime())
         }
         btnSimulate.setOnClickListener {
-            var SimulationData: SimulationDates =
-                SimulationDates(
-                    dateFormat.parse(btnJourneyStart.text.toString()),
-                    dateFormat.parse(btnJourneyMid.text.toString()),
-                    dateFormat.parse(btnJourneyEnd.text.toString()),
-                    stepTextView.text.toString().toDouble()
-                );
 
         }
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
