@@ -48,16 +48,28 @@ class SimulationActivity : AppCompatActivity() {
 
         }
         thread.start()
-
-        btnSwap.setOnClickListener{
-            if(iterator==0)
-                calV1.setDate(SimulationData.beginDate.time)
-            if(iterator==1)
-                calV1.setDate(SimulationData.tempDate.time)
-            if(iterator==2){
-                calV1.setDate(SimulationData.endDate.time)
-                iterator=0}
+        fun setCurDate(){
             iterator++
+            if(iterator>=2){
+                calV1.setDate(SimulationData.endDate.time)
+                iterator=0
+                return
+            }
+            if(iterator==1){
+                calV1.setDate(SimulationData.tempDate.time)
+
+                return
+            }
+            if(iterator==0) {
+                calV1.setDate(SimulationData.beginDate.time)
+
+                return
+            }
+        }
+        btnSwap.setOnClickListener{
+
+
+            setCurDate()
         }
     }
 }
