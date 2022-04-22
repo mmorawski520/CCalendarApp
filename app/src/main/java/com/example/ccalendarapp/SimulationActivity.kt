@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.CalendarView
 import android.widget.ProgressBar
+import java.util.*
 
 class SimulationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,6 +18,10 @@ class SimulationActivity : AppCompatActivity() {
         val i = intent
         var SimulationData = i.getSerializableExtra("SimulationData") as SimulationDates
 
+        val currentDate = Calendar.getInstance()
+        currentDate.set(currentDate.get(Calendar.YEAR), Calendar.DECEMBER, 31)
+        calV.minDate = Date().time
+        calV.setMaxDate(currentDate.timeInMillis)
 
         val daysBetweenStartAndEnd =
             (SimulationData.endDate.time - SimulationData.beginDate.time).toInt()
@@ -35,5 +40,7 @@ class SimulationActivity : AppCompatActivity() {
 
         }
         thread.start()
+
+
     }
 }
