@@ -16,7 +16,7 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     var dateFormatString = "MM/dd/yyyy"
     var dateFormat = SimpleDateFormat(dateFormatString, Locale.US)
-
+    var choosebtn=0;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         //layout components
         val seekBar = findViewById<SeekBar>(R.id.seekBar)
         val stepTextView = findViewById<TextView>(R.id.textViewStep)
+
 
         //btns
         val btnJourneyStart = findViewById<Button>(R.id.btnJourneyStart)
@@ -42,6 +43,12 @@ class MainActivity : AppCompatActivity() {
                 cal.set(Calendar.YEAR, year)
                 cal.set(Calendar.MONTH, monthOfYear)
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                if(choosebtn==0)
+                    btnJourneyStart.text = dateFormat.format(cal.getTime())
+                if(choosebtn==1)
+                    btnJourneyMid.text = dateFormat.format(cal.getTime())
+                if(choosebtn==2)
+                    btnJourneyEnd.text = dateFormat.format(cal.getTime())
             }
         }
 
@@ -58,7 +65,7 @@ class MainActivity : AppCompatActivity() {
             dpd.datePicker.minDate = Date().time
             dpd.datePicker.setMaxDate(currentDate.timeInMillis)
             dpd.show()
-            btnJourneyStart.text = dateFormat.format(cal.getTime())
+            choosebtn=0
         }
 
         btnJourneyMid.setOnClickListener {
@@ -75,7 +82,7 @@ class MainActivity : AppCompatActivity() {
             dpd.datePicker.minDate = Date().time
             dpd.datePicker.setMaxDate(currentDate.timeInMillis)
             dpd.show()
-            btnJourneyMid.text = dateFormat.format(cal.getTime())
+            choosebtn=1
         }
         btnJourneyEnd.setOnClickListener {
             var dpd = DatePickerDialog(
@@ -90,7 +97,7 @@ class MainActivity : AppCompatActivity() {
             dpd.datePicker.minDate = Date().time
             dpd.datePicker.setMaxDate(currentDate.timeInMillis)
             dpd.show()
-            btnJourneyEnd.text = dateFormat.format(cal.getTime())
+            choosebtn=2
         }
         btnSimulate.setOnClickListener {
             var SimulationData: SimulationDates =
@@ -101,7 +108,7 @@ class MainActivity : AppCompatActivity() {
                     stepTextView.text.toString().toDouble()
                 );
             val intent = Intent(this, SimulationActivity::class.java)
-            intent.putExtra("SimulationData",SimulationData)
+            intent.putExtra("SimulationData", SimulationData)
             startActivity(intent)
         }
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
