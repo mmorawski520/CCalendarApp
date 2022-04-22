@@ -1,6 +1,7 @@
 package com.example.ccalendarapp
 
 import android.app.DatePickerDialog
+import android.content.Intent
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -91,7 +92,17 @@ class MainActivity : AppCompatActivity() {
             btnJourneyEnd.text = dateFormat.format(cal.getTime())
         }
         btnSimulate.setOnClickListener {
-
+            var SimulationData: SimulationDates =
+                SimulationDates(
+                    dateFormat.parse(btnJourneyStart.text.toString()),
+                    dateFormat.parse(btnJourneyMid.text.toString()),
+                    dateFormat.parse(btnJourneyEnd.text.toString()),
+                    stepTextView.text.toString().toDouble()
+                );
+            val intent = Intent(this, SimulationActivity::class.java)
+            // intent.putExtra("SimulationData",SimulationData)
+            intent.putExtra("SimulationData",SimulationData)
+            startActivity(intent)
         }
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             var progressChangedValue = 0
