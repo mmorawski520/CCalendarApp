@@ -1,8 +1,8 @@
 package com.example.ccalendarapp
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.CalendarView
 import android.widget.ProgressBar
 import java.util.*
@@ -13,19 +13,27 @@ class SimulationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_simulation)
 
         val progressb = findViewById<ProgressBar>(R.id.progressBar)
-        val calV = findViewById<CalendarView>(R.id.calendarView)
+        val calV1 = findViewById<CalendarView>(R.id.calendarView1)
+        val btnSwap = findViewById<Button>(R.id.btnSwap)
 
+        var iterator=0;
         val i = intent
         var SimulationData = i.getSerializableExtra("SimulationData") as SimulationDates
 
         val currentDate = Calendar.getInstance()
         currentDate.set(currentDate.get(Calendar.YEAR), Calendar.DECEMBER, 31)
-        calV.minDate = Date().time
-        calV.setMaxDate(currentDate.timeInMillis)
+
+        calV1.minDate = Date().time
+        calV1.setMaxDate(currentDate.timeInMillis)
+
+
 
         val daysBetweenStartAndEnd =
             (SimulationData.endDate.time - SimulationData.beginDate.time).toInt()
-        calV.setDate(SimulationData.beginDate.time)
+
+        calV1.setDate(SimulationData.beginDate.time)
+
+
 
         val thread = Thread {
             try {
@@ -41,6 +49,15 @@ class SimulationActivity : AppCompatActivity() {
         }
         thread.start()
 
-
+        btnSwap.setOnClickListener{
+            if(iterator==0)
+                calV1.setDate(SimulationData.beginDate.time)
+            if(iterator==1)
+                calV1.setDate(SimulationData.tempDate.time)
+            if(iterator==2){
+                calV1.setDate(SimulationData.endDate.time)
+                iterator=0}
+            iterator++
+        }
     }
 }

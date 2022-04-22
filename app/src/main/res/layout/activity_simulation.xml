@@ -19,15 +19,22 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent">
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="35dp" />
+
+    <CalendarView
+        android:id="@+id/calendarView1"
+        android:layout_width="398dp"
+        android:layout_height="320dp" />
+
+    <Button
+        android:id="@+id/btnSwap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="swap" />
+
   </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

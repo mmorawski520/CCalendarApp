@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         val btnJourneyEnd = findViewById<Button>(R.id.btnJourneyEnd)
         val btnSimulate = findViewById<Button>(R.id.btnStartSim)
 
+
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
             override fun onDateSet(
                 view: DatePicker, year: Int, monthOfYear: Int,
